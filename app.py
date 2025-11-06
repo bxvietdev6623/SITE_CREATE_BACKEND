@@ -9,7 +9,7 @@ import json, re, time, os
 # ⚙️ Cấu hình API - NẠP KHÓA TRỰC TIẾP
 # ========================================
 # OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-OPENAI_API_KEY = "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"  # Thay bằng khóa API thực của bạn
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 if not OPENAI_API_KEY:
     raise ValueError("❌ 缺少 OPENAI_API_KEY 环境变量，请在 Render 上设置 Environment Variables。")
 
@@ -124,3 +124,4 @@ def home():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=False)
+
