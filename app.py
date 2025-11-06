@@ -51,7 +51,12 @@ def generate_article(main_kw, url, index):
     prompt = (
         f"请为主关键词「{main_kw}」生成3个高度相关的中文长尾关键词（JSON数组），"
         f"并用这3个长尾关键词写一段推广文案，长度100-150字，开头必须是：{main_kw}【网址：{url}】。\n"
-        "要求：1. 每个长尾关键词必须包含主关键词；2. 不与主关键词完全重复；3. 推广文案要自然流畅、有吸引力，不能过度重复关键词；4. 只返回JSON对象，如：{related_keywords: [...], content: \"...\"}"
+        "要求：\n"
+        "1. 每个长尾关键词必须包含主关键词；\n"
+        "2. 不与主关键词完全重复；\n"
+        "3. 推广文案要自然流畅、有吸引力，不能过度重复关键词；\n"
+        "4. 如果出现年份，只能使用“2026年”，不能出现2025年或更早的年份；\n"
+        "5. 只返回JSON对象，如：{related_keywords: [...], content: \"...\"}"
     )
     text = call_chat(prompt, max_tokens=700, temperature=0.9, system_prompt=system_prompt)
     try:
@@ -124,4 +129,5 @@ def home():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=False)
+
 
